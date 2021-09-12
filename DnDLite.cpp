@@ -12,6 +12,7 @@ This program is a DnD combat simulator. It creates a player then has the user fi
 #include <string>
 #include "playerCharacter.h"
 #include "NPC.h"
+#include "Combat.h"
 using std::cout;
 using std::cin;
 using std::string;
@@ -52,27 +53,7 @@ void intiateCombat(NPC& firstAttacker, playerCharacter& playerOne) {
     //check if the user wants to keep fightingh
     bool cont = true;
 
-    //check both players health and if the player wants to attack 
-    while (firstAttacker.getHealth() > 0 && playerOne.getHealth() > 0 && cont) {
-
-        //NPC attacks
-        playerOne.recieveAttack(firstAttacker.attack());
-
-        //check with user
-        string answer;
-        cout << "Say yes if you would like to attack back! No to run: ";
-        cin >> answer;
-
-        //if yes continue to attack
-        if (answer == "yes" || answer == "Yes") {
-            firstAttacker.recieveAttack(playerOne.attack());
-            cont = true;
-        }
-        //else exit loop
-        else {
-            cont = false;
-        }
-    }
+  
 }
 
 
@@ -131,32 +112,16 @@ int main()
     
 
     //create player character
-    playerCharacter playerOne = playerCharacter(PlayerNameptr, health, armor, strength, charasma);
-
+    playerCharacter playerOne = playerCharacter(PlayerName, health, armor, strength, charasma);
+    
     //Create 4 NPCs of varing level
-    NPC firstAttacker = NPC(1);
     NPC secondAttacker = NPC(2,"Jodie Foster");
     NPC thirdAttacker = NPC(3,"The green machine");
     NPC fourthAttacker = NPC(4, "Full Medal Alcemist");
 
-    //Group them in a vector
-    vector<NPC> figher = {firstAttacker ,secondAttacker, thirdAttacker,fourthAttacker};
+    cout << secondAttacker.getHealth();
+    Combat test = Combat(&playerOne, &secondAttacker);
 
-    //range for loop through each encounter
-    for (NPC fight : figher) {
-
-        //Tell them who they are fighting
-        cout << "You have encountered " << fight.getNPCName() << "\n";
-
-        //intiate combat
-        intiateCombat(fight, playerOne);
-
-    }
-
-    if (playerOne.getHealth() > 0) {
-        cout << "Congrats " << playerOne.getCharacterName() << " you have won.\n\n";
-    }
-
-
+    cout << test.getRounds();
 }
 

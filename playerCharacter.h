@@ -12,44 +12,35 @@ header file for player character. Has all required player character  functions. 
 
 #include <string>
 #include <vector>
+#include "Character.h"
+
 using std::string;
 using std::vector;
 
-class playerCharacter
+class playerCharacter : public Character
 {
-	//Strings for names and desription
-	string characterName;
-
-	//Character stats
-	int health;
-	int armor;
-	int strength;
-	int charasma;
 
 	//value for the total cost of all items
 	int total = 10;
-
+	int charasma;
+	int armor;
+	int strength; 
 
 public:
 	//Provie constructor
-	explicit playerCharacter(string* characterName, int health, int armor, int strength, int charasma);
+	explicit playerCharacter(string characterName, int health, int armor, int strength, int charasma);
 
 	//Provide getters for all variables
-	string getCharacterName();
-	int getHealth();
+	
 	int getArmor();
 	int getStrength();
 	int getCharasma();
 
 	//Provide setters for all variables
-	void setCharacterName(string characterName);
 	void setArmor(int armor);
-	void setHealth(int health);
 	void setStrength(int strength);
 	void setCharasma(int charasma);
-
-	void recieveAttack(vector<int> attack);
-	vector<int> attack();
+	void copy(playerCharacter test);
 };
 
 

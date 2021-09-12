@@ -1,17 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="playerCharacter">
-    <Position X="0.5" Y="0.75" Width="2.5" />
+    <Position X="1.75" Y="4.5" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAYIAAAEQAAIAAAAAAAAIRCCYEAAABBACAg=</HashCode>
+      <HashCode>AAAAAAAAAAQAAAAEQAAAAAAAAAAAAZIAQEAAABBAAAA=</HashCode>
       <FileName>playerCharacter.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="NPC">
-    <Position X="4.25" Y="0.75" Width="3" />
+    <Position X="5.25" Y="4.5" Width="3" />
+    <InheritanceLine Type="Character" ManuallyRouted="true">
+      <Path>
+        <Point X="5" Y="2.062" />
+        <Point X="5" Y="4.094" />
+        <Point X="6.75" Y="4.094" />
+        <Point X="6.75" Y="4.5" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAYABAAAAEAAAQAEAEAAACDIAAAAAAAAIg=</HashCode>
+      <HashCode>AAAAAAAAAAAAABAAAAEAAAQAEAEAAAAAAAAAAAAAAIg=</HashCode>
       <FileName>NPC.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Character" Collapsed="true">
+    <Position X="4.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIIAAAAAAAIAAAAAAAAIACCIAAAAAAACAg=</HashCode>
+      <FileName>Character.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Combat">
+    <Position X="7.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAgACAAgAAAAAQAAAAEACAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Combat.h</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

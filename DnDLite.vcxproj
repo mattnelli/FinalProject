@@ -139,11 +139,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Combat.cpp" />
     <ClCompile Include="DnDLite.cpp" />
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="playerCharacter.cpp" />
+    <ClCompile Include="Character.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Character.h" />
+    <ClInclude Include="Combat.h" />
     <ClInclude Include="NPC.h" />
     <ClInclude Include="playerCharacter.h" />
   </ItemGroup>
