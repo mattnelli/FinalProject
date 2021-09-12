@@ -1,0 +1,6 @@
+﻿  Combat.cpp
+  DnDLite.cpp
+C:\Users\Matthew Nelli\source\repos\DnDLite\DnDLite\DnDLite.cpp(27,48): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
+Combat.obj : error LNK2001: unresolved external symbol "private: static int Combat::totalCombat" (?totalCombat@Combat@@0HA)
+C:\Users\Matthew Nelli\source\repos\DnDLite\x64\Debug\DnDLite.exe : fatal error LNK1120: 1 unresolved externals
