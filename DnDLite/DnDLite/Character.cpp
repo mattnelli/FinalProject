@@ -47,3 +47,16 @@ void Character::setHealth(int hlth) {
 	health = hlth;
 }
 
+int Character::rollDamage() {
+	std::default_random_engine engine{ static_cast<unsigned int>(time(0)) };
+	std::uniform_int_distribution<unsigned int> DamageRoll{ 1,4 };
+
+	return DamageRoll(engine);
+}
+int Character::rollInitiative() {
+	std::default_random_engine engine{ static_cast<unsigned int>(time(0)) };
+	std::uniform_int_distribution<unsigned int> AttackRoll{ 1,20 };
+	
+	return AttackRoll(engine);
+
+}

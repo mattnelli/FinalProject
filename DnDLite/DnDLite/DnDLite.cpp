@@ -122,6 +122,8 @@ int main()
     cout << secondAttacker.getHealth();
     Combat test = Combat(&playerOne, &secondAttacker);
 
+    test.initiateCombat();
+    cout << test;
     cout << test.getRounds();
 }
 

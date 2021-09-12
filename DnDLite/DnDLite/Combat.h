@@ -13,28 +13,33 @@ Syracuse University
 #include <string>
 #include <sstream>
 #include <iostream>
+#include <iomanip>
 #include <array>
 #include <vector> 
 #include "Character.h"
+#include "playerCharacter.h"
 
 using std::string;
 using std::array;
 using std::vector;
+using std::ostream;
 
 class Combat
 {
 
 	static int totalCombat;
 	int roundsOfCombat;
-	Character* charOne;
+	playerCharacter* charOne;
 	Character* charTwo;
 
+	friend ostream &operator<<(ostream&, const Combat &);
 	
 	
 public:
 	//Provie constructor
-	explicit Combat(Character* charOne, Character* charTwo);
-
+	explicit Combat(playerCharacter* charOne, Character* charTwo);
+	
+	
 	//Start combat 
 	void initiateCombat(); 
 	int getTotalCombat();

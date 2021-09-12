@@ -38,5 +38,7 @@ public:
 	void recieveAttack(vector<int> attack, string characterName);
 	vector<int> attack();
 
+	int rollDamage();
+	int rollInitiative();
 	
 };

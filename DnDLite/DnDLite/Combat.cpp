@@ -12,49 +12,67 @@ This is the NPC class. It creates an NPC and handles health and combat
 #include <sstream>
 #include "Combat.h"
 #include "Character.h"
+#include "playerCharacter.h"
 #include <string>
 #include <array>
 #include <random>
 #include <ctime>
+#include <iomanip>
 #include <vector>
 using namespace std;
 using std::string;
 using std::array;
 using std::cout;
+using std::ostream;
 
+int Combat::totalCombat = 0;
 
-Combat::Combat(Character* chrOneptr, Character* chrTwoptr){
+Combat::Combat(playerCharacter* chrOneptr, Character* chrTwoptr){
 	charOne = chrOneptr;
 	charTwo = chrTwoptr;
-	totalCombat++;
+	totalCombat = totalCombat + 1;
 	roundsOfCombat = 0;
 }
 
 
 void Combat::initiateCombat() {
-	std::default_random_engine engine{ static_cast<unsigned int>(time(0)) };
-	std::uniform_int_distribution<unsigned int> AttackRoll{ 1,20 };
-	std::uniform_int_distribution<unsigned int> DamageRoll{ 1,4 };
+	
 
 	bool cont = true;
-	cout << "You have ecountered " << charTwo->getCharacterName() << " they have " << charTwo->getHealth() << "/n";
+	cout << "You have ecountered " << charTwo->getCharacterName() << " they have " << charTwo->getHealth() << "\n";
+
+	cout << "Would you like to fight them? They will attack first \n";
 
 	while (charOne->getHealth() > 0 && charTwo->getHealth() > 0 && cont) {
 
 		//check wth user
 		string answer;
-		cout << "Say yes if you would like to attack back! No to run: ";
+		
 		cin >> answer;
-
 		if (answer == "yes" || answer == "Yes") {
-			//firstAttacker.recieveAttack(playerOne.attack());
+			roundsOfCombat++;
 			cont = true;
+			
+			if (charTwo->rollInitiative() > charOne->getArmor()) {
+				cout << charTwo->getCharacterName() << "attack hit!\n";
+				int attackValue = charTwo->rollDamage();
+				cout << "You take " << attackValue << " points of damage\n"; 
+
+				charOne->setHealth(charOne->getHealth() - attackValue);
+				cout << "You health is now " << charOne->getHealth() << "\n";
+			}
+			else {
+				cout << charTwo->getCharacterName() << "attack missed!\n";
+			}
+
+
+
 		}
 		else {
 			cont = false; 
 		}
 
-
+		cout << "Say yes if you would like to attack back! No to run: ";
 	}
 
 
@@ -70,9 +88,8 @@ int Combat::getTotalCombat() {
 	return totalCombat;
 }
 
-ostream& operator<<(ostream& output,  Combat& fight) {
-	output << "The current fight is " << fight.getRounds() << "rounds long\n"
-		<< "Your campaign has been " << fight.getTotalCombat() << "rounds long\n";
+ostream &operator<<(ostream &output,  const Combat &fight) {
+	output << "The current fight is "  << fight.roundsOfCombat << "rounds long\n"<< "Your campaign has been " << fight.totalCombat << "rounds long\n";
 	return output;
 }
 
